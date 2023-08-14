@@ -21,6 +21,10 @@ const userSchema = new Schema({
         minlength: 8, // Increase the minimum length for enhanced security
         maxlength: 26,
     },
+    friends: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User', // Reference to other User documents
+    }],
 });
 
 userSchema.pre('save', async function (next) {
