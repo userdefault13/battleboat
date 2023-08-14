@@ -12,11 +12,14 @@ const { PubSub } = require('graphql-subscriptions');
 const bcrypt = require('bcrypt');
 const User = require('./models/User'); // Import the User model
 const { typeDefs, resolvers } = require('./schemas');
+const createGameRoutes = require('./Routes/auth/games/createGame');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+// Use the create game routes
+app.use('/api/game', createGameRoutes);
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));

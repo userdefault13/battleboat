@@ -3,13 +3,14 @@ import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
     const navigate = useNavigate();
+    
+    const logout = () => {
+        localStorage.removeItem('token');
+        navigate('/')
+    }
 
     useEffect(() => {
-        // Perform logout-related actions here, such as clearing cookies or local storage
-        // ...
-
-        // Redirect to the home page after logging out
-        navigate('/'); // Use the navigate function to redirect
+        logout()
     }, [navigate]);
 
     return (
